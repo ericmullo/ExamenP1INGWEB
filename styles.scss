@@ -1,0 +1,234 @@
+/* ========= VARIABLES (colores, tamaños y helpers globales) ========= */
+$red: #d61f2a;               // rojo de marca (usado en botones y barra inferior)
+$red-dark: #b31b23;          // rojo oscuro para hover
+$blue: #2aa1ff;              // azul de línea bajo header
+$text: #333;                 // texto base
+$muted: #767676;             // texto secundario
+$bg: #ffffff;                // fondo de tarjetas/áreas blancas
+$bg-page: #f5f7f9;           // fondo general de la página
+$line: #e6e6e6;              // líneas y bordes suaves
+$radius: 16px;               // radio por defecto para tarjetas
+$container: 1120px;          // ancho máximo del contenedor
+$shadow: 0 6px 22px rgba(0,0,0,.10); // sombra de tarjetas
+$ff: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; // tipografía global
+
+/* ========= BASE (reset mínimo y helpers reutilizables) ========= */
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; padding: 0; }
+body { font-family: $ff; color: $text; background: $bg-page; line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+.container { width: min(100% - 32px, $container); margin-inline: auto; }
+
+/* ========= COMPONENTES REUTILIZABLES ========= */
+.section-title { font-size: 1.35rem; margin: 22px 0 14px; }
+.card { background: $bg; border: 1px solid $line; border-radius: $radius; padding: 22px; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+
+.btn { // botón genérico
+  --h: 42px; display: inline-flex; align-items: center; gap: 10px;
+  padding: 0 18px; height: var(--h); border-radius: 10px; border: 1px solid transparent;
+  cursor: pointer; font-weight: 600; white-space: nowrap;
+
+  &--primary { background: $red; color: #fff; &:hover { background: $red-dark; } }
+  &--ghost   { background: #fff; border-color: $line; width: 42px; justify-content: center; }
+  &--price   { background: #efefef; border-color: $line; font-weight: 700; }
+  &__icon, &__cart { width: 18px; height: 18px; border-radius: 3px; background: #fff; display: inline-block; }
+}
+
+.placeholder { // bloque placeholder genérico
+  background: #fff; border: 1px solid $line; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,.06);
+  &.--ratio-16-10 { aspect-ratio: 16/10; }
+}
+
+/* ========= HEADER (logo, menú, buscador, línea azul) ========= */
+.header {
+  background: #fff; border-bottom: 1px solid $line;
+
+  &__row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; }
+
+  &__brand { display: flex; align-items: center; gap: 4px;
+    .logo { color: $red; font-size: 28px; font-weight: 800; letter-spacing: .3px; }
+    .logo__text { font-size: .8rem; color: $muted; margin-top: 6px; }
+  }
+
+  &__nav { flex: 1; display: flex; justify-content: center; }
+  &__profile { display: flex; align-items: center; }
+
+  &__searchbar { background: #fff; padding: 12px 0; border-top: 1px solid #eee; }
+  &__underline { height: 3px; background: $blue; }
+}
+
+/* Menú de navegación principal */
+.menu { display: flex; gap: 18px; list-style: none;
+  &__link { color: #6a6a6a; font-weight: 600; padding: 6px 0; border-bottom: 2px solid transparent;
+    &:hover { color: #222; }
+    &--active { color: $red; border-bottom-color: $red; }
+  }
+}
+
+/* Buscador debajo del menú, alineado a la izquierda */
+.search {
+  position: relative; width: 320px; margin: 0;
+  &__input {
+    width: 100%; height: 38px; border-radius: 20px; border: 1px solid $line;
+    padding: 0 38px 0 14px; background: #fff; color: $text;
+    &:focus { outline: none; border-color: #cfd9e3; box-shadow: 0 0 0 3px rgba($blue,.15); }
+  }
+  &__btn { // botón con icono de lupa hecho en CSS
+    position: absolute; right: 4px; top: 4px; width: 30px; height: 30px;
+    border-radius: 50%; background: #fff; border: 2px solid #ccc; cursor: pointer;
+    &::before { content:""; display:block; width:12px; height:12px; border:2px solid #333; border-radius:50%; margin:6px auto 0; }
+    &::after { content:""; position:absolute; width:6px; height:2px; background:#333; right:6px; bottom:8px; transform:rotate(45deg); }
+  }
+}
+
+/* Avatar/Perfil (círculo gris) */
+.profile__photo { width: 34px; height: 34px; border-radius: 50%; background: #ccc; background-position: center; background-size: cover; cursor: pointer; }
+
+/* ========= BREADCRUMB ========= */
+.breadcrumb { border-bottom: 1px solid $line; background:#fff;
+  .container { padding: 12px 0; color: $muted; font-size: .92rem; }
+  &__sep { margin: 0 6px; color: #bbb; } &__link { color: $muted; &:hover{color:#222;} }
+  &__current { color: #222; font-weight: 700; }
+}
+
+/* ========= PRODUCTO (grid principal) ========= */
+.product { padding: 24px 0 8px;
+  &__grid { display: grid; grid-template-columns: 420px 1fr; gap: 28px; align-items: start; }
+}
+
+/* ========= GALERÍA (imagen grande + miniaturas) ========= */
+.gallery {
+  &__main { border-radius: 14px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,.10); }
+  &__img { width: 100%; height: auto; display: block; border-radius: 14px; }
+  &__thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
+  &__thumb { width: 100%; height: auto; border-radius: 8px; border: 2px solid #eee; transition: transform .2s ease, border-color .2s ease;
+    &:hover { transform: scale(1.03); border-color: $red; }
+  }
+}
+
+/* ========= INFO DEL PRODUCTO ========= */
+.info { background:#fff; border:1px solid $line; border-radius: 12px; padding:22px; box-shadow: 0 2px 10px rgba(0,0,0,.06);
+  &__title{ font-size:1.35rem; font-weight:700; margin-bottom:8px; }
+  &__price{ color:#222; font-size:1.25rem; font-weight:800; margin:6px 0 10px; }
+  &__excerpt{ color:#555; margin-bottom:16px; }
+  &__actions{ display:flex; gap:12px; align-items:center; }
+}
+
+/* Control de cantidad (— 1 +) */
+.qty { display:inline-flex; align-items:center; border:1px solid $line; border-radius:8px; height:42px; overflow:hidden; background:#fff;
+  &__btn{ width:36px; height:100%; border:0; background:#f0f0f0; font-weight:700; cursor:pointer; }
+  &__input{ width:48px; height:100%; border:0; text-align:center; font-weight:700; }
+}
+
+/* ========= RELACIONADOS (tarjetas estilo referencia) ========= */
+.related { padding: 8px 0 24px;
+  &__grid { display:grid; grid-template-columns: repeat(3,1fr); gap:24px; }
+}
+
+.card-product {
+  position: relative; background: #fff; border-radius: $radius; box-shadow: $shadow; overflow: hidden;
+  border: 1px solid rgba(0,0,0,.06);
+
+  /* Círculo amarillo con el número */
+  &__badge{
+    position:absolute; top:12px; right:12px; width: 32px; height: 32px; border-radius: 50%;
+    background: #ffd21f; color:#111; font-weight: 800; font-size: .95rem;
+    display:grid; place-items:center; z-index:2; box-shadow: 0 2px 6px rgba(0,0,0,.15);
+  }
+
+  /* Imagen superior */
+  &__media { width: 100%; aspect-ratio: 16/12; overflow: hidden; }
+  &__img { width: 100%; height: 100%; object-fit: cover; display:block; }
+
+  /* Título de la tarjeta */
+  &__body { padding: 16px 18px 12px; }
+  &__title { font-size: 1.05rem; font-weight: 700; color: #282828; min-height: 48px; }
+
+  /* Barra inferior gris con carrito y precio */
+  &__actions {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 16px;
+    background: #eceff3;  /* gris claro como la referencia */
+    border-top: 1px solid rgba(0,0,0,.06);
+  }
+}
+
+/* Botón de carrito blanco con icono rojo construido en CSS */
+.cart-btn {
+  width: 58px; height: 38px; border-radius: 10px; border: 0; cursor: pointer;
+  background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,.12);
+  position: relative; display: grid; place-items: center;
+
+  &__icon, &::before, &::after { content:""; position:absolute; }
+
+  /* Canasto */
+  &__icon { width: 18px; height: 12px; border: 2px solid $red; border-top: 0; bottom: 11px; }
+  /* Asa */
+  &::before {
+    width: 16px; height: 8px; border: 2px solid $red; border-bottom: 0; border-radius: 8px 8px 0 0;
+    top: 9px; left: 50%; transform: translateX(-50%);
+  }
+}
+
+/* Botón de precio en pastilla roja */
+.price-btn {
+  min-width: 120px; height: 38px; border-radius: 10px; padding: 0 14px;
+  background: $red; color: #fff; font-weight: 800; font-size: 1rem; border: 0; cursor: pointer;
+  box-shadow: 0 2px 8px rgba(214,31,42,.35);
+  display: inline-flex; align-items: center; justify-content: center;
+  &:hover { background: $red-dark; }
+}
+
+/* ========= FOOTER (colores como la captura: gris oscuro + barra roja) ========= */
+.footer {
+  margin-top: 12px; color: #cfd2d4; // color de texto por defecto dentro del footer
+
+  /* Franja superior gris oscuro con 3 columnas */
+  &__top{
+    background:#4f4f4f;             // gris oscuro
+    border-top: 4px solid #6a6a6a;   // línea superior (más oscura)
+    border-bottom: 0;
+    padding:26px 0;
+    display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px; justify-content: center; column-gap: 56px; align-items:start;
+
+    .logo--lg{ color:#ff5a5f; font-size:48px; font-weight:800; line-height:1;margin-left: 30px; }
+    .logo__text--footer{ color:#e6e6e6; font-size:.85rem; margin-top:6px; margin-left: 30px; }
+
+    .footer__title{ color:#ffffff; font-weight:800; margin-bottom:10px; }
+    .footer__list{ list-style:none; display:grid; gap:8px;
+      li{ color:#e6e6e6; }
+    }
+  }
+
+  /* Franja inferior roja (marca) */
+  &__bottom{
+    background:$red;  // rojo de marca
+    color:#fff;
+    padding:14px 0; text-align:center;
+    p{ margin:0; font-weight:600; letter-spacing:.2px; }
+  }
+}
+
+/* ========= DESCRIPCIÓN (tipografía/espaciado igual a referencia) ========= */
+.desc {
+  .section-title { font-size: 1.5rem; font-weight: 700; color: #111; margin-bottom: 16px; }
+  .card { border: none; box-shadow: none; padding: 0;
+    p { font-size: 1rem; color: #3e3e3e; line-height: 1.7; margin-bottom: 1rem; }
+    strong { font-weight: 700; color: #1a1a1a; }
+  }
+}
+
+/* ========= MEDIA QUERIES (responsivo) ========= */
+@media (max-width: 1100px) {
+  .product__grid { grid-template-columns: 360px 1fr; }
+  .search { width: 260px; }
+}
+@media (max-width: 920px) {
+  .menu { flex-wrap: wrap; justify-content: center; }
+  .product__grid { grid-template-columns: 1fr; }
+  .related__grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 720px) {
+  .related__grid { grid-template-columns: 1fr; }
+  .footer__top { grid-template-columns: 1fr; }
+}
