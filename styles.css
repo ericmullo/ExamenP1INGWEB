@@ -1,14 +1,15 @@
 @charset "UTF-8";
-/* ========= Variables ========= */
-/* ========= Base ========= */
+/* ========= VARIABLES ========= */
+/* ========= BASE ========= */
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  font-family: "Inter", system-ui, sans-serif;
   color: #222;
+  background: #fff;
 }
 
 a {
@@ -21,7 +22,7 @@ a {
   margin-inline: auto;
 }
 
-/* ========= Botones ========= */
+/* ========= BOTONES ========= */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -30,6 +31,8 @@ a {
   border-radius: 8px;
   font-weight: 700;
   font-size: 0.95rem;
+  cursor: pointer;
+  border: none;
 }
 .btn--dark {
   background: #111;
@@ -43,7 +46,7 @@ a {
   background: #e44334;
 }
 
-/* ========= Utilidades ========= */
+/* ========= UTILIDADES ========= */
 .link {
   color: #3b82f6;
   font-weight: 600;
@@ -87,7 +90,7 @@ a {
   margin-right: auto;
 }
 
-/* ========= Placeholder para imágenes ========= */
+/* ========= PLACEHOLDER ========= */
 .img-placeholder {
   background: #fff;
   border: 2px dashed #d9dce3;
@@ -100,7 +103,7 @@ a {
   border-radius: 50%;
 }
 
-/* ========= Header SOBRE el hero (transparente) ========= */
+/* ========= HEADER ========= */
 .header {
   position: absolute;
   top: 0;
@@ -143,7 +146,6 @@ a {
   margin-left: 36px;
 }
 
-/* subrayado del activo como en la referencia */
 .nav__link--active {
   position: relative;
 }
@@ -159,12 +161,13 @@ a {
   opacity: 0.95;
 }
 
-/* ========= Hero (todo el bloque en rojo) ========= */
+/* ========= HERO ========= */
 .hero {
+  position: relative;
   background: #ff503e;
   color: #fff;
   text-align: center;
-  /* padding-top grande para no tapar el header absoluto */
+  overflow: visible;
   padding: 140px 0 96px;
 }
 @media (max-width: 900px) {
@@ -187,8 +190,31 @@ a {
   color: rgba(255, 255, 255, 0.95);
   margin: 0 0 10px;
 }
+.hero__corner {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 160px;
+  height: auto;
+  transform: translateY(50%);
+  pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  display: block;
+}
+@media (max-width: 1024px) {
+  .hero__corner {
+    width: 140px;
+  }
+}
+@media (max-width: 640px) {
+  .hero__corner {
+    width: 110px;
+  }
+}
 
-/* ========= Intro 2 columnas ========= */
+/* ========= INTRO ========= */
 .intro__grid {
   display: grid;
   gap: 36px;
@@ -203,6 +229,21 @@ a {
 .intro__title {
   font-size: clamp(1.6rem, 1rem + 2.2vw, 2.2rem);
   margin: 0 0 18px;
+}
+
+.intro__image {
+  width: 100%;
+  height: 100%;
+  max-height: 420px;
+  border-radius: 14px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.intro__image:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.12);
 }
 
 .features {
@@ -231,7 +272,7 @@ a {
   margin: 0 0 12px;
 }
 
-/* ========= Popular / Creativity ========= */
+/* ========= POPULAR / CREATIVITY ========= */
 .section--alt {
   background: #f2f5fb;
 }
@@ -247,6 +288,20 @@ a {
     grid-template-columns: 1fr;
   }
 }
+.popular__media {
+  display: block;
+}
+
+.popular__image {
+  width: 100%;
+  max-width: 520px;
+  border-radius: 18px;
+  display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  margin-left: auto;
+}
 
 .tag {
   color: #ef4444;
@@ -256,6 +311,7 @@ a {
   letter-spacing: 0.12em;
 }
 
+/* Twin: imagen a la izquierda + texto a la derecha */
 .twin {
   margin-top: 36px;
   display: grid;
@@ -269,6 +325,16 @@ a {
   }
 }
 
+.twin__image {
+  width: 100%;
+  max-width: 520px;
+  border-radius: 18px;
+  display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
 .checks {
   margin: 14px 0 0;
   padding-left: 1.2rem;
@@ -278,7 +344,7 @@ a {
   margin: 0.5rem 0;
 }
 
-/* ========= How it works ========= */
+/* ========= HOW IT WORKS ========= */
 .cards {
   display: grid;
   gap: 20px;
@@ -313,31 +379,46 @@ a {
   color: #6b6f76;
 }
 
-/* ========= Testimonial ========= */
+/* ========= TESTIMONIAL ========= */
 .testimonial {
   background: #4f46e5;
   color: #fff;
-  padding: 68px 0;
+  padding: 96px 0;
+}
+@media (max-width: 900px) {
+  .testimonial {
+    padding: 80px 0;
+  }
 }
 .testimonial__box {
   display: grid;
   align-items: center;
-  gap: 20px;
+  gap: 28px;
   grid-template-columns: auto 1fr auto;
+  min-height: 280px;
 }
 @media (max-width: 900px) {
   .testimonial__box {
     grid-template-columns: 1fr;
     text-align: center;
+    min-height: unset;
   }
 }
 .testimonial__person {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 18px;
+  justify-self: start;
+}
+@media (max-width: 900px) {
+  .testimonial__person {
+    justify-content: center;
+  }
 }
 .testimonial__name {
   margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
 }
 .testimonial__role {
   margin: 2px 0 0;
@@ -345,20 +426,43 @@ a {
 }
 .testimonial__quote {
   margin: 0;
-  font-size: clamp(1.1rem, 0.9rem + 1vw, 1.4rem);
-  line-height: 1.5;
+  font-size: clamp(1.2rem, 1rem + 1.1vw, 1.6rem);
+  line-height: 1.55;
+  max-width: 75ch;
 }
 .testimonial .arrow {
   border: 0;
-  background: rgba(0, 0, 0, 0.15);
+  background: rgba(0, 0, 0, 0.18);
   color: #fff;
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
   font-weight: 700;
 }
+@media (max-width: 900px) {
+  .testimonial .arrow {
+    justify-self: center;
+  }
+}
 
-/* ========= Blog ========= */
+/* Avatar */
+.avatar {
+  width: 116px;
+  height: 116px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+}
+@media (max-width: 900px) {
+  .avatar {
+    width: 96px;
+    height: 96px;
+  }
+}
+
+/* ========= BLOG ========= */
 .post {
   background: #fff;
   border: 1px solid #eceef3;
@@ -367,9 +471,6 @@ a {
   display: grid;
   gap: 12px;
   padding-bottom: 18px;
-}
-.post__media {
-  border-bottom: 1px solid #eceef3;
 }
 .post__title {
   margin: 12px 18px 0;
@@ -380,7 +481,22 @@ a {
   color: #6b6f76;
 }
 
-/* ========= Footer ========= */
+/* Imagen de la card */
+.post__img {
+  width: 100%;
+  height: 220px; /* ajusta si quieres más/menos alto */
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+  border-bottom: 1px solid #eceef3;
+}
+@media (min-width: 1200px) {
+  .post__img {
+    height: 240px;
+  }
+}
+
+/* ========= FOOTER ========= */
 .footer {
   background: #f6f7fb;
   color: #222;
