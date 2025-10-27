@@ -1,244 +1,232 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>House or Flat Tenancy AST</title>
-
-  <!-- Fuente Inter para toda la UI -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Hoja de estilos compilada desde styles.scss -->
-  <link rel="stylesheet" href="styles.css"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Metsys — Landing</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body class="page">
-
-  <!-- ========== HEADER (zona superior del sitio) ========== -->
+  <!-- ===== Header (sobre el hero, transparente) ===== -->
   <header class="header">
-    <div class="container header__row">
-      <!-- Marca / logo -->
-      <a class="header__brand" href="#">
-        <div class="logo">bnb</div>
-        <span class="logo__text">Specialist.com</span>
-      </a>
+    <div class="container header__bar">
+      <a class="brand" href="#">Metsys</a>
 
-      <!-- Navegación principal -->
-      <nav class="header__nav">
-        <ul class="menu">
-          <li class="menu__item"><a class="menu__link menu__link--active" href="#">Home</a></li>
-          <li class="menu__item"><a class="menu__link" href="#">Blog</a></li>
-          <li class="menu__item"><a class="menu__link" href="#">Hosting Shop</a></li>
-          <li class="menu__item"><a class="menu__link" href="#">Hosting Tools</a></li>
-          <li class="menu__item"><a class="menu__link" href="#">Videos</a></li>
-          <li class="menu__item"><a class="menu__link" href="#">Community</a></li>
+      <nav class="nav">
+        <ul class="nav__list">
+          <li class="nav__item"><a class="nav__link nav__link--active" href="#">Home</a></li>
+          <li class="nav__item"><a class="nav__link" href="#">About us</a></li>
+          <li class="nav__item"><a class="nav__link" href="#">Blog</a></li>
+          <li class="nav__item"><a class="nav__link" href="#">Contact</a></li>
         </ul>
       </nav>
 
-      <!-- Avatar/Perfil (placeholder) -->
-      <div class="header__profile">
-        <div class="profile__photo"></div>
-      </div>
+      <a class="btn btn--dark header__cta" href="#">Get started</a>
     </div>
-
-    <!-- Buscador debajo del menú, alineado a la izquierda -->
-    <div class="header__searchbar">
-      <div class="container">
-        <div class="search">
-          <input class="search__input" type="text" placeholder="Type to Search" />
-          <button class="search__btn" aria-label="search"></button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Línea azul inferior del header -->
-    <div class="header__underline"></div>
   </header>
 
-  <!-- ========== BREADCRUMB (miguitas de pan) ========== -->
-  <div class="breadcrumb">
-    <div class="container">
-      <a href="#" class="breadcrumb__link">Hosting Shop</a>
-      <span class="breadcrumb__sep">/</span>
-      <a href="#" class="breadcrumb__link">Templates</a>
-      <span class="breadcrumb__sep">/</span>
-      <span class="breadcrumb__current">No Nonsense</span>
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <p class="eyebrow">Glad to present</p>
+      <h1 class="hero__title">The fundamentals of<br>expanding your business</h1>
+      <p class="hero__subtitle">
+        Our Professionals will help you develop business model<br>
+        based on risk reward favorable ratio.
+      </p>
+      <a class="btn btn--dark" href="#">Get started</a>
     </div>
-  </div>
+  </section>
 
-  <!-- ========== PRODUCTO (grid: galería + info) ========== -->
-  <main class="product">
-    <div class="container product__grid">
-
-      <!-- Galería con imagen principal y miniaturas -->
-      <section class="gallery">
-        <div class="gallery__main">
-          <img src="libro.png" alt="Libro abierto" class="gallery__img" />
-        </div>
-
-        <div class="gallery__thumbs">
-          <img src="libro.png" alt="Miniatura 1" class="gallery__thumb" />
-          <img src="libro.png" alt="Miniatura 2" class="gallery__thumb" />
-          <img src="libro.png" alt="Miniatura 3" class="gallery__thumb" />
-        </div>
-      </section>
-
-      <!-- Información del producto: título, precio, descripción corta, acciones -->
-      <section class="info">
-        <h1 class="info__title">
-          House or Flat Tenency AST Assured Short Hold Tenency Agreement contract UK Only
-        </h1>
-
-        <div class="info__price">$39.00</div>
-
-        <p class="info__excerpt">
-          Very Comprehensive Rental Property Management Contract (AST) Template.
-          If you are looking to manage your property as a landlord, having a written
-          contract is a must. This agreement will serve as a record of commitments for both
-          parties and offers both legal and risk mitigation...
-        </p>
-
-        <div class="info__actions">
-          <!-- Control de cantidad -->
-          <div class="qty">
-            <button class="qty__btn" type="button">-</button>
-            <input class="qty__input" type="text" value="1" aria-label="quantity"/>
-            <button class="qty__btn" type="button">+</button>
-          </div>
-          <!-- Botón de añadir al carrito -->
-          <button class="btn btn--primary"><span class="btn__icon"></span>Add to Cart</button>
-        </div>
-      </section>
+  <!-- ===== Intro (2 col) ===== -->
+  <section class="intro section">
+    <div class="container intro__grid">
+      <div class="intro__text">
+        <h2 class="intro__title">Welcome to a world<br>of inspiration for<br>your agency.</h2>
+        <a class="btn btn--primary" href="#">Get started</a>
+      </div>
+      <div class="intro__media">
+        <div class="img-placeholder" aria-label="image placeholder"></div>
+      </div>
     </div>
-  </main>
 
-  <!-- ========== DESCRIPCIÓN LARGA ========== -->
-  <section class="desc">
-    <div class="container">
-      <h2 class="section-title">Description</h2>
-
-      <div class="card">
-        <!-- Texto formateado con saltos de línea para imitar el original -->
-        <p>
-          <strong>House or Flat Rental Contract</strong> &nbsp;✓ INSTANT DOWNLOAD<br><br>
-          Very Comprehensive Rental Property Management Contract (AST) Template.<br>
-          If you are looking to manage your property as a landlord, having a written
-          contract is a must.<br>
-          This agreement will serve as a record of commitments for both parties and
-          prevent conflicts and mitigate risk. If an agreement is in place, it increases the
-          efficiency, which leads to generating higher revenues which will be much more
-          than the investment you will put in to get the agreement in place.<br>
-          This short-term rental management agreement template can be used as an AST,
-          Assured Shorthold Tenancy Agreement.<br><br>
-          <strong>Delivery</strong><br><br>
-          Instant Digital Download<br>
-          Your files will be available to download Instantly, once payment is confirmed,
-          through a link.<br>
-          You can log in again anytime to get a copy through the link in the secure
-          member’s area for all your digital downloads.
+    <div class="container features">
+      <div class="features__item">
+        <h3 class="features__title">Planning Tools</h3>
+        <p class="features__desc">
+          We will tell you about the technologies that we
+          applied in this work, the difficulties encountered
+          and the solutions. We will find out why the project
+          became unprofitable and was worth it.
         </p>
+        <a href="#" class="link">Learn more</a>
+      </div>
+      <div class="features__item">
+        <h3 class="features__title">Editable Design</h3>
+        <p class="features__desc">
+          We will tell you about the technologies that we
+          applied in this work, the difficulties encountered
+          and the solutions. We will find out why the
+          project became unprofitable and was worth it.
+        </p>
+        <a href="#" class="link">Learn more</a>
       </div>
     </div>
   </section>
 
-  <!-- ========== RELACIONADOS (tarjetas con imagen, badge, barra gris, carrito y precio) ========== -->
-  <section class="related">
+  <!-- ===== Popular / Creativity ===== -->
+  <section class="popular section section--alt">
+    <div class="container popular__grid">
+      <div class="popular__text">
+        <span class="tag">Popular</span>
+        <h2 class="section__title">Creativity &amp; experience,<br>our greatest tools</h2>
+        <p class="section__desc">
+          We will tell you about the technologies that we applied
+          in this work, the difficulties encountered, the solutions
+          found and the outcomes.
+        </p>
+      </div>
+      <div class="popular__media">
+        <div class="img-placeholder" aria-label="image placeholder"></div>
+      </div>
+    </div>
+
+    <div class="container twin">
+      <div class="twin__media">
+        <div class="img-placeholder" aria-label="image placeholder"></div>
+      </div>
+      <div class="twin__text">
+        <h3 class="section__title">We match talent<br>with business</h3>
+        <p class="section__desc">
+          We will tell you about the technologies that we
+          applied in this work, the difficulties encountered
+          and the solutions.
+        </p>
+        <ul class="checks">
+          <li>Clean, modern design, can be used for any type of website</li>
+          <li>The new ultimate multi-purpose theme</li>
+          <li>User experience tested and improved</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== How it works ===== -->
+  <section class="how section section--soft">
     <div class="container">
-      <h2 class="section-title">Related Products</h2>
+      <h2 class="section__title section__title--center">How it works</h2>
+      <p class="section__desc section__desc--center">
+        With lots of unique blocks, you can easily build a page without coding.
+        Build your next agency website within few minutes.
+      </p>
 
-      <div class="related__grid">
-        <!-- Tarjeta 1 -->
-        <article class="card-product">
-          <div class="card-product__badge">1</div>
-          <div class="card-product__media">
-            <img src="imagen1.png" alt="Producto 1" class="card-product__img">
-          </div>
-          <div class="card-product__body">
-            <h4 class="card-product__title">15 Pages Assured Shorthold Tenency Agreement</h4>
-          </div>
-          <div class="card-product__actions">
-            <button class="cart-btn" aria-label="add to cart">
-              <span class="cart-btn__icon"></span>
-            </button>
-            <button class="price-btn">$39.00</button>
-          </div>
+      <div class="cards cards--three">
+        <article class="card">
+          <div class="card__icon">📱</div>
+          <h3 class="card__title">1 - Register with mobile</h3>
+          <p class="card__text">With lots of unique blocks, you can easily build a page without coding. Build your next job website.</p>
         </article>
-
-        <!-- Tarjeta 2 -->
-        <article class="card-product">
-          <div class="card-product__badge">1</div>
-          <div class="card-product__media">
-            <img src="imagen2.png" alt="Producto 2" class="card-product__img">
-          </div>
-          <div class="card-product__body">
-            <h4 class="card-product__title">No-Nonsense AIRBNB</h4>
-          </div>
-          <div class="card-product__actions">
-            <button class="cart-btn" aria-label="add to cart">
-              <span class="cart-btn__icon"></span>
-            </button>
-            <button class="price-btn">$39.00</button>
-          </div>
+        <article class="card">
+          <div class="card__icon">⚙️</div>
+          <h3 class="card__title">2 - Set your criteria</h3>
+          <p class="card__text">With lots of unique blocks, you can easily build a page without coding. Build your next job website.</p>
         </article>
-
-        <!-- Tarjeta 3 -->
-        <article class="card-product">
-          <div class="card-product__badge">1</div>
-          <div class="card-product__media">
-            <img src="imagen3.png" alt="Producto 3" class="card-product__img">
-          </div>
-          <div class="card-product__body">
-            <h4 class="card-product__title">6 Page Airbnb Cleaning Agreement</h4>
-          </div>
-          <div class="card-product__actions">
-            <button class="cart-btn" aria-label="add to cart">
-              <span class="cart-btn__icon"></span>
-            </button>
-            <button class="price-btn">$39.00</button>
-          </div>
+        <article class="card">
+          <div class="card__icon">🔎</div>
+          <h3 class="card__title">3 - Explore opportunities</h3>
+          <p class="card__text">With lots of unique blocks, you can easily build a page without coding. Build your next job website.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ========== FOOTER (dos franjas: gris oscuro arriba, rojo abajo) ========== -->
+  <!-- ===== Testimonial ===== -->
+  <section class="testimonial">
+    <div class="container testimonial__box">
+      <div class="testimonial__person">
+        <div class="avatar img-placeholder img-placeholder--round" aria-label="avatar placeholder"></div>
+        <div>
+          <h4 class="testimonial__name">Ashley Right</h4>
+          <p class="testimonial__role">Product designer</p>
+        </div>
+      </div>
+
+      <blockquote class="testimonial__quote">
+        “OMG! I cannot believe that I have got a brand new landing page after
+        getting Omega. It was super easy to edit and publish.”
+      </blockquote>
+
+      <div class="testimonial__arrows">
+        <button class="arrow" aria-label="prev">▲</button>
+        <button class="arrow" aria-label="next">▼</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Blog ===== -->
+  <section class="blog section section--soft">
+    <div class="container">
+      <h2 class="section__title section__title--center">Latest News &amp; Articles</h2>
+      <p class="section__desc section__desc--center">With lots of unique blocks, you can easily build a page without coding. Build your next agency website within few minutes.</p>
+
+      <div class="cards cards--three">
+        <article class="post">
+          <div class="img-placeholder post__media"></div>
+          <h3 class="post__title">How to manage your time efficiently to do more</h3>
+          <p class="post__text">With lots of unique blocks, you can easily build a page without coding. Build your next job website.</p>
+        </article>
+
+        <article class="post">
+          <div class="img-placeholder post__media"></div>
+          <h3 class="post__title">Why freelancers are more interested in Full-time?</h3>
+          <p class="post__text">With lots of unique blocks, you can easily build a page without coding. Build your next job website.</p>
+        </article>
+
+        <article class="post">
+          <div class="img-placeholder post__media"></div>
+          <h3 class="post__title">Why should you work as a team on small projects</h3>
+          <p class="post__text">With lots of unique blocks, you can easily build a page without coding. Build your next job website.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
   <footer class="footer">
-    <div class="container footer__top">
-      <!-- Columna logo -->
-      <div class="footer__col footer__col--logo">
-        <div class="logo logo--lg">bnb</div>
-        <div class="logo__text logo__text--footer">Specialist.com</div>
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <div class="brand brand--footer">Metsys</div>
+        <p>With lots of unique blocks, you can easily build a page without coding. Build your next landing page.</p>
+        <div class="footer__social">f  •  g  •  e</div>
       </div>
 
-      <!-- Columna contacto -->
-      <div class="footer__col">
-        <h4 class="footer__title">Contact Us</h4>
-        <ul class="footer__list">
-          <li>Phone: +4477 2977 8006</li>
-          <li>Email: contact@bnbspecialists.com</li>
-          <li>Address: CodeBase, 37a Castle Terrace, Edinburgh, EH1 2EL, United Kingdom</li>
-        </ul>
+      <div class="footer__links">
+        <h4>Information</h4>
+        <a href="#">About</a>
+        <a href="#">Projects</a>
+        <a href="#">Pricing</a>
+        <a href="#">Testimonial</a>
       </div>
 
-      <!-- Columna políticas -->
-      <div class="footer__col">
-        <h4 class="footer__title">Policies</h4>
-        <ul class="footer__list">
-          <li>Privacy Policy</li>
-          <li>Refund Policy</li>
-          <li>Shipping Policy</li>
-          <li>Refunds and Returns Policy</li>
-          <li>Terms &amp; Conditions</li>
-          <li>Terms of Service</li>
-        </ul>
+      <div class="footer__links">
+        <h4>Support</h4>
+        <a href="#">FAQ</a>
+        <a href="#">Contact</a>
+        <a href="#">Community</a>
+        <a href="#">Privacy policy</a>
+      </div>
+
+      <div class="footer__subscribe">
+        <h4>Subscribe</h4>
+        <p>Get the latest news and updates right at your email address</p>
+        <form class="subscribe">
+          <input class="subscribe__input" type="email" placeholder="Your email address">
+          <button class="btn btn--primary subscribe__btn" type="button">→</button>
+        </form>
       </div>
     </div>
-
-    <!-- Franja roja inferior con copyright -->
-    <div class="footer__bottom">
-      <div class="container">
-        <p>Copyright © 2025. All rights reserved</p>
-      </div>
-    </div>
+    <div class="footer__bottom">©2020 UXTheme, All Rights Reserved</div>
   </footer>
 </body>
 </html>
