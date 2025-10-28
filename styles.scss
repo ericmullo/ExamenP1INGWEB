@@ -1,214 +1,296 @@
 /* ========= VARIABLES ========= */
-$brand-red: #ff503e;
-$brand-red-dark: #e44334;
-$ink: #222;
-$muted: #6b6f76;
-$soft-bg: #f6f7fb;
-$alt-bg: #eef2fb;
-$blue: #4f46e5;
-$white: #fff;
-$card-border: #eceef3;
-
+/* Variables globales reutilizables */
+$brand-red: #ff503e;        // color principal (fondo hero, botones)
+$brand-red-dark: #e44334;   // color hover o acento
+$ink: #222; //color base del texto principal
+$muted: #6b6f76; // texto secundario
+$soft-bg: #f6f7fb; //fondo claro
+$alt-bg: #eef2fb; // Fondo alternativo
+$blue: #4f46e5; // Color se utiliza en la seccion de testimonios
+$white: #fff; // Color de texto claro en fondos oscuros
+$card-border: #eceef3; // Color para bordes 
+ 
+ 
 /* ========= BASE ========= */
+/* Estilos generales del documento */
 * { box-sizing: border-box; }
-body { margin: 0; font-family: 'Inter', system-ui, sans-serif; color: $ink; background: #fff; }
+ 
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: $ink;
+  background: #fff;
+}
+ 
 a { text-decoration: none; color: inherit; }
-.container { width: min(1120px, 92%); margin-inline: auto; }
-
+ 
+.container {
+  width: min(1120px, 92%);
+  margin-inline: auto;
+}
+ 
+ 
 /* ========= BOTONES ========= */
+/* Aplica a los botones del HTML. Ej: <a class="btn btn--primary"> */
 .btn {
-  display: inline-flex; align-items: center; justify-content: center;
-  padding: 12px 18px; border-radius: 8px; font-weight: 700; font-size: .95rem;
-  cursor: pointer; border: none;
-
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: .95rem;
+  cursor: pointer;
+  border: none;
+ 
+  /* BEM + nesting: modificadores */
   &--dark { background: #111; color: $white; }
   &--primary { background: $brand-red; color: $white; &:hover { background: $brand-red-dark; } }
 }
-
+ 
+ 
 /* ========= UTILIDADES ========= */
+/* Clases pequeñas usadas en títulos o textos */
 .link { color: #3b82f6; font-weight: 600; }
-.eyebrow { text-transform: uppercase; letter-spacing: .12em; font-size: .72rem; opacity: .9; color:$white; }
+.eyebrow { text-transform: uppercase; letter-spacing: .12em; font-size: .72rem; opacity: .9; color: $white; }
 .section { padding: 72px 0; }
 .section--alt { background: $alt-bg; }
 .section--soft { background: $soft-bg; }
 .section__title { font-size: clamp(1.5rem, 1rem + 2vw, 2.1rem); line-height: 1.2; margin: 0 0 10px; }
 .section__desc { color: $muted; margin: 0 0 28px; max-width: 62ch; }
 .section__title--center, .section__desc--center { text-align: center; margin-left:auto; margin-right:auto; }
-
-/* ========= PLACEHOLDER ========= */
-.img-placeholder {
-  background: $white; border: 2px dashed #d9dce3; border-radius: 14px; width:100%;
-  aspect-ratio: 16/10;
-  &--round { aspect-ratio: 1/1; border-radius: 50%; }
-}
-
+ 
+ 
 /* ========= HEADER ========= */
+/* Cabecera del sitio (<header>) con logo, menú y botón principal */
+/* BEM: .header__bar, .header__cta / .nav__link--active */
 .header {
-  position: absolute; top: 0; left: 0; width: 100%;
-  background: transparent; z-index: 20;
-
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  background: transparent;
+  z-index: 20;
+ 
   &__bar { display: flex; align-items: center; gap: 24px; padding: 18px 0; }
   .brand { font-weight: 800; color: $white; font-size: 1.05rem; }
 }
+ 
 .nav {
   margin-left: auto;
   &__list { display: flex; gap: 28px; list-style: none; padding: 0; margin: 0; }
-  &__link { color: rgba($white,.85); font-weight: 600; &:hover{ color:$white; } }
+  &__link { color: rgba($white,.85); font-weight: 600; &:hover { color: $white; } }
 }
 .header__cta { margin-left: 36px; }
-
+ 
 .nav__link--active {
   position: relative;
   &::after { content:""; position:absolute; left:0; right:0; bottom:-10px; height:3px; border-radius:3px; background:$white; opacity:.95; }
 }
-
+ 
+ 
 /* ========= HERO ========= */
+/* Sección principal (fondo rojo con título, texto y botón) */
+/* BEM: .hero__inner, .hero__title, .hero__subtitle, .hero__corner */
 .hero {
   position: relative;
-  background: $brand-red; color: $white; text-align: center;
-  overflow: visible;
+  background: $brand-red;
+  color: $white;
+  text-align: center;
   padding: 140px 0 96px;
-  @media (max-width: 900px){ padding-top: 120px; }
-
+ 
   &__inner { display: grid; justify-items: center; gap: 14px; }
   &__title { font-size: clamp(1.8rem, 1.2rem + 2.6vw, 2.6rem); line-height: 1.25; margin: 0; color:$white; }
   &__subtitle { color: rgba($white,.95); margin: 0 0 10px; }
-
-  &__corner {
-    position: absolute; right: 0; bottom: 0; width: 160px; height: auto;
-    transform: translateY(50%); pointer-events: none; user-select: none; display: block;
-    @media (max-width: 1024px){ width: 140px; }
-    @media (max-width: 640px){ width: 110px; }
-  }
+  &__corner { position: absolute; right: 0; bottom: 0; width: 160px; height: auto; transform: translateY(50%); }
 }
-
+ 
+ 
 /* ========= INTRO ========= */
+/* Bloque de introducción con texto y una imagen lateral */
 .intro {
-  &__grid {
-    display: grid; gap: 36px; align-items: center;
-    grid-template-columns: 1.1fr .9fr;
-    @media (max-width: 900px) { grid-template-columns: 1fr; }
-  }
+  &__grid { display: grid; gap: 36px; align-items: center; grid-template-columns: 1.1fr .9fr; }
   &__title { font-size: clamp(1.6rem, 1rem + 2.2vw, 2.2rem); margin: 0 0 18px; }
 }
-.intro__image{
-  width: 100%; height: 100%; max-height: 420px; border-radius: 14px; object-fit: cover;
-  box-shadow: 0 4px 18px rgba(0,0,0,.08); transition: transform .3s ease, box-shadow .3s ease;
-  &:hover{ transform: scale(1.02); box-shadow: 0 6px 22px rgba(0,0,0,.12); }
+ 
+.intro__image {
+  width: 100%; height: 100%; max-height: 420px;
+  border-radius: 14px; object-fit: cover;
+  box-shadow: 0 4px 18px rgba(0,0,0,.08);
+  transition: transform .3s ease, box-shadow .3s ease;
 }
+ 
+ 
+/* ========= FEATURES ========= */
+/* Tarjetas con información (Planning Tools, Editable Design) */
+/* BEM + nesting en .features */
 .features {
-  margin-top: 42px; display: grid; gap: 24px; grid-template-columns: repeat(2, 1fr);
-  @media (max-width: 800px) { grid-template-columns: 1fr; }
+  margin-top: 42px;
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(2, 1fr);
+ 
   &__item { background: $white; border: 1px solid $card-border; border-radius: 14px; padding: 22px; }
   &__title { margin: 0 0 10px; font-size: 1.05rem; }
   &__desc { color: $muted; margin: 0 0 12px; }
 }
-
+ 
+ 
 /* ========= POPULAR / CREATIVITY ========= */
-.section--alt { background: #f2f5fb; }
+/* Sección “Creativity & experience” con imagen y texto */
 .popular {
-  &__grid {
-    display: grid; gap: 36px; grid-template-columns: 1.1fr .9fr; align-items: center;
-    @media (max-width: 900px) { grid-template-columns: 1fr; }
-  }
+  &__grid { display: grid; gap: 36px; grid-template-columns: 1.1fr .9fr; align-items: center; }
   &__media { display: block; }
 }
-.popular__image{
+ 
+.popular__image {
   width: 100%;
   max-width: 520px;
   border-radius: 18px;
   display: block;
   object-fit: cover;
-  box-shadow: 0 8px 24px rgba(0,0,0,.08);
-  margin-left: auto;
 }
+ 
 .tag { color: #ef4444; font-weight: 700; text-transform: uppercase; font-size: .75rem; letter-spacing: .12em; }
-
-/* Twin: imagen a la izquierda + texto a la derecha */
+ 
+ 
+/* ========= TWIN ========= */
+/* Bloque con imagen a la izquierda y texto a la derecha */
 .twin {
   margin-top: 36px;
-  display: grid; gap: 36px; grid-template-columns: .9fr 1.1fr; align-items: center;
-  @media (max-width: 900px) { grid-template-columns: 1fr; }
+  display: grid;
+  gap: 36px;
+  grid-template-columns: .9fr 1.1fr;
+  align-items: center;
 }
-.twin__image{
+ 
+.twin__image {
   width: 100%;
-  max-width: 520px;
   border-radius: 18px;
-  display: block;
   object-fit: cover;
-  box-shadow: 0 8px 24px rgba(0,0,0,.08);
 }
+ 
 .checks { margin: 14px 0 0; padding-left: 1.2rem; color: $ink; li { margin: .5rem 0; } }
-
+ 
+ 
 /* ========= HOW IT WORKS ========= */
-.cards { display: grid; gap: 20px;
-  &--three { grid-template-columns: repeat(3, 1fr);
-    @media (max-width: 900px){ grid-template-columns: 1fr; }
-  }
-}
+/* Sección de pasos (Register, Criteria, Explore) */
+.cards { display: grid; gap: 20px; &--three { grid-template-columns: repeat(3, 1fr); } }
+ 
 .card {
-  background: $white; border: 1px solid $card-border; border-radius: 16px; padding: 22px;
-  display: grid; gap: 8px;
-  &__icon { font-size: 28px; line-height: 1; }
+  background: $white;
+  border: 1px solid $card-border;
+  border-radius: 16px;
+  padding: 22px;
+  display: grid;
+  gap: 8px;
+ 
+  &__icon { font-size: 28px; }
   &__title { margin: 0; font-size: 1.05rem; }
   &__text { margin: 0; color: $muted; }
 }
-
+ 
+ 
 /* ========= TESTIMONIAL ========= */
+/* Cita de cliente (nombre, foto, comentario) */
 .testimonial {
-  background: $blue; color: $white; padding: 96px 0;
-  @media (max-width: 900px){ padding: 80px 0; }
-
-  &__box { display: grid; align-items: center; gap: 28px; grid-template-columns: auto 1fr auto;
-    min-height: 280px;
-    @media (max-width: 900px){ grid-template-columns: 1fr; text-align: center; min-height: unset; } }
-  &__person { display: flex; align-items: center; gap: 18px; justify-self: start;
-    @media (max-width: 900px){ justify-content: center; } }
+  background: $blue;
+  color: $white;
+  padding: 96px 0;
+ 
+  &__box { display: grid; align-items: center; gap: 28px; grid-template-columns: auto 1fr auto; }
+  &__person { display: flex; align-items: center; gap: 18px; }
   &__name { margin: 0; font-size: 1.05rem; font-weight: 700; }
   &__role { margin: 2px 0 0; opacity: .9; }
-  &__quote { margin: 0; font-size: clamp(1.2rem, 1rem + 1.1vw, 1.6rem); line-height: 1.55; max-width: 75ch; }
-  .arrow { border: 0; background: rgba(#000,.18); color:$white; width: 42px; height: 42px; border-radius: 10px; font-weight: 700;
-    @media (max-width: 900px){ justify-self: center; } }
+  &__quote { margin: 0; font-size: clamp(1.2rem, 1rem + 1.1vw, 1.6rem); line-height: 1.55; }
 }
-
-/* Avatar */
-.avatar{
-  width: 116px; height: 116px;
+ 
+ 
+/* ========= AVATAR ========= */
+/* Imagen redonda del testimonio */
+.avatar {
+  width: 116px;
+  height: 116px;
   border-radius: 50%;
   object-fit: cover;
   display: block;
   box-shadow: 0 8px 18px rgba(0,0,0,.18);
-  @media (max-width: 900px){ width: 96px; height: 96px; }
 }
-
+ 
+ 
 /* ========= BLOG ========= */
+/* Artículos del blog con imagen, título y texto */
 .post {
-  background: $white; border: 1px solid $card-border; border-radius: 16px; overflow: hidden; display: grid; gap: 12px; padding-bottom: 18px;
+  background: $white;
+  border: 1px solid $card-border;
+  border-radius: 16px;
+  overflow: hidden;
+  display: grid;
+  gap: 12px;
+  padding-bottom: 18px;
+ 
   &__title { margin: 12px 18px 0; font-size: 1.02rem; }
   &__text { margin: 0 18px; color: $muted; }
 }
-/* Imagen de la card */
-.post__img{
+ 
+.post__img {
   width: 100%;
-  height: 220px;         /* ajusta si quieres más/menos alto */
+  height: 220px;
   object-fit: cover;
   display: block;
   border-bottom: 1px solid $card-border;
-  @media (min-width: 1200px){ height: 240px; }
 }
-
+ 
+ 
 /* ========= FOOTER ========= */
+/* Pie de página con columnas: marca, enlaces, soporte, suscripción */
+/* BEM: .footer__grid, .footer__links, .footer__bottom */
 .footer {
-  background: $soft-bg; color: $ink; margin-top: 22px;
-  &__grid { display: grid; gap: 26px; padding: 36px 0; grid-template-columns: 1.3fr 1fr 1fr 1.3fr;
-    @media (max-width: 1000px){ grid-template-columns: 1fr 1fr; }
-    @media (max-width: 620px){ grid-template-columns: 1fr; } }
-  &__links { display: grid; gap: 10px;
+  background: $soft-bg;
+  color: $ink;
+  margin-top: 22px;
+ 
+  &__grid {
+    display: grid;
+    gap: 26px;
+    padding: 36px 0;
+    grid-template-columns: 1.3fr 1fr 1fr 1.3fr;
+  }
+ 
+  &__links {
+    display: grid;
+    gap: 10px;
+ 
     h4 { margin: 0 0 6px; }
-    a { color: $muted; &:hover{ color: $ink; } } }
+    a { color: $muted; &:hover { color: $ink; } }
+  }
+ 
   &__subscribe { p { color: $muted; margin-top: 0; } }
-  .subscribe { display: flex; gap: 8px; margin-top: 8px;
-    &__input { flex: 1; padding: 12px 14px; border-radius: 10px; border: 1px solid $card-border; background:$white; }
-    &__btn { padding: 0 14px; border: 0; border-radius: 10px; } }
-  &__bottom { border-top: 1px solid $card-border; padding: 16px 0; text-align: center; color: $muted; font-size: .9rem; }
+ 
+  .subscribe {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+ 
+    &__input {
+      flex: 1;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid $card-border;
+      background: $white;
+    }
+ 
+    &__btn {
+      padding: 0 14px;
+      border: 0;
+      border-radius: 10px;
+    }
+  }
+ 
+  &__bottom {
+    border-top: 1px solid $card-border;
+    padding: 16px 0;
+    text-align: center;
+    color: $muted;
+    font-size: .9rem;
+  }
 }
